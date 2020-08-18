@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Koreographer))]
 public class FmodKoreoMusicPlayer : MonoBehaviour, IKoreographedPlayer {
+    public AudioClip clip;
     public bool playOnAwake;
     public float startTime = 0;
     private FMODAudioVisor visor;
     private FMODMusicPlayer musicPlayer;
     private Koreographer koreographer;
+
 
     private bool startedPlaying;
 
@@ -45,10 +47,10 @@ public class FmodKoreoMusicPlayer : MonoBehaviour, IKoreographedPlayer {
 
 
     private void InstantiateAudio() {
-        koreographer.UnloadKoreography(config.koreo);
-        koreographer.LoadKoreography(config.koreo);
-        musicPlayer = new FMODMusicPlayer(config.clip);
-        visor = new FMODAudioVisor(musicPlayer.fmodInstance, koreographer, config.clip);
+        koreographer.UnloadKoreography(koreographer.GetKoreographyAtIndex(0));
+        koreographer.LoadKoreography(koreographer.GetKoreographyAtIndex(0));
+        musicPlayer = new FMODMusicPlayer(clip);
+        visor = new FMODAudioVisor(musicPlayer.fmodInstance, koreographer, clip);
     }
 
 
@@ -72,8 +74,8 @@ public class FmodKoreoMusicPlayer : MonoBehaviour, IKoreographedPlayer {
 
     public float GetPitch(string clipName) => musicPlayer.GetPitch(clipName);
 
-    public string GetCurrentClipName() => config.clip.name;
+    public string GetCurrentClipName() => clip.name;
 
-    private int SampleForSecond(float time) => Mathf.RoundToInt(time * config.clip.samples / config.clip.length) ;
+    private int SampleForSecond(float time) => Mathf.RoundToInt(time * clip.samples / clip.length) ;
 
 }
