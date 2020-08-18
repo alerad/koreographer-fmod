@@ -1,3 +1,5 @@
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/alerad/koreographer-fmod/blob/master/LICENSE)
 # Background
 
 After buying koreographer, and having my sound guy convince me of adding FMOD, I've spent at least two days of headaches trying to get them to work together.
