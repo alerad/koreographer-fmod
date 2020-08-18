@@ -34,3 +34,5 @@ Handles loading the AudioClip into FMOD and has helper functions.
 Syncs the FMOD timeline with the koreographer timeline. You will have a hard time and will cry reading this class. I had it too, and i'm still not sure how it works.
 
 
+
+Made with love from the Dashi VR Team
